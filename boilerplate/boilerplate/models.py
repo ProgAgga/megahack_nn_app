@@ -51,4 +51,3 @@ class OfferOrderResultChoices:
 
 class OfferOrder(md.Model):
     result = md.CharField(max_length=3, choices=OfferOrderResultChoices.CHOICES)
-
