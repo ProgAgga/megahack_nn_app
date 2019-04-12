@@ -10,10 +10,10 @@ urlpatterns = [
 ]
 
 urlpatterns.extend([
-   # path('api/offers', ),
+    path('api/offers', OfferListView.as_view()),
    # path('api/options', ),
    # path('api/sources', ),
-   # path('api/dealers', ),
+    path('api/dealers', DealerListView.as_view()),
     path('api/clients', ClientsListView.as_view()),
     path('api/clients/<int:id>', ClientDetailView.as_view())
    # path('api/orders', ),
