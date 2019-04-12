@@ -9,6 +9,16 @@ class ClientsListView(gr.ListAPIView):
     serializer_class = ClientSerializer
 
 
+class OfferListView(gr.ListAPIView):
+    queryset = Offer.objects.all()
+    serializer_class = OfferSerializer
+
+
+class DealerListView(gr.ListAPIView):
+    queryset = Dealer.objects.all()
+    serializer_class = DealerSerializer
+
+
 # mock view, SHOULD BE APIView
 class OrdersListView(gr.ListAPIView):
     pass

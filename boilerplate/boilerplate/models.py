@@ -38,5 +38,6 @@ class Dealer(md.Model):
     name = md.CharField(max_length=100, null=False)
 
 
+# Заказ подключения акции
 class OfferOrder(md.Model):
     result = md.CharField()
