@@ -23,7 +23,7 @@ class Client(md.Model):
 
 # Акция, которую предлагают абоненту
 class Offer(md.Model):
-    name = md.CharField(max_length=100, null=False)
+    name = md.CharField(max_length=100, null=False, unique=True)
     due_date = md.DateTimeField(auto_now=True)
     options = pg.JSONField(null=True)
 
@@ -35,9 +35,4 @@ class Options(md.Model):
 
 # Диллер, продающий симкарты и предлагающий акции
 class Dealer(md.Model):
-    name = md.CharField(max_length=100, null=False)
-
-
-# Заказ подключения акции
-class OfferOrder(md.Model):
-    result = md.CharField()
+    name = md.CharField(max_length=100, null=False, unique=True)

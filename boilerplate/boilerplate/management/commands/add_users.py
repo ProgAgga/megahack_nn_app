@@ -1,5 +1,5 @@
-from django.core.management.base import BaseCommand, CommandError
-from boilerplate.models import Client, Offer, Options, Dealer
+from django.core.management.base import BaseCommand
+from boilerplate.models import Client
 import datetime
 import itertools
 import random
