@@ -4,9 +4,11 @@ from boilerplate.models import *
 
 
 class ClientSerializer(sz.ModelSerializer):
+    dealer = sz.PrimaryKeyRelatedField(read_only=True)
+
     class Meta:
         model = Client
-        fields = ('id', 'name', 'sex', 'phone', 'age', 'date_of_admission')
+        fields = ('id', 'name', 'sex', 'phone', 'age', 'date_of_admission', 'dealer')
 
 
 class OfferSerializer(sz.ModelSerializer):
