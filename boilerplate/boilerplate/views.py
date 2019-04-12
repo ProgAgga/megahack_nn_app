@@ -43,7 +43,12 @@ class ClientDetailView(gr.RetrieveAPIView):
     lookup_field = 'id'
 
 
-# mock view, SHOULD BE APIView
 class OffersOrdersListView(gr.ListCreateAPIView):
     queryset = OfferOrder.objects.all()
     serializer_class = OfferOrderSerializer
+
+
+class OfferOrderDetailView(gr.RetrieveAPIView):
+    queryset = OfferOrder.objects.all()
+    serializer_class = OfferOrderSerializer
+    lookup_field = 'id'

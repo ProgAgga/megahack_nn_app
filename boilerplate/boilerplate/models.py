@@ -51,10 +51,10 @@ class OfferOrderResultChoices:
 
 
 class OfferOrder(md.Model):
-    offer = md.ForeignKey(Offer, on_delete=md.SET_NULL)
+    offer = md.ForeignKey(Offer, on_delete=md.CASCADE)
     client = md.ForeignKey(Client, on_delete=md.CASCADE)
-    dealer = md.ForeignKey(Dealer, on_delete=md.SET_NULL)
-    id_hash = md.BinaryField(max_length=256)
+    dealer = md.ForeignKey(Dealer, on_delete=md.SET_NULL, null=True)
+    id_hash = md.CharField(max_length=64)
     result = md.CharField(max_length=3, choices=OfferOrderResultChoices.CHOICES)
     date_created = md.DateTimeField(auto_now=True)
     date_processed = md.DateTimeField(null=True, default=None)

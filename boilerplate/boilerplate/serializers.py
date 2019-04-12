@@ -28,4 +28,4 @@ class OfferOrderSerializer(sz.ModelSerializer):
 
     class Meta:
         model = OfferOrder
-        fields = ('offer', 'result', 'date_created', 'date_processed', 'id_hash')
+        fields = ('offer', 'client', 'dealer', 'id_hash', 'result', 'date_created', 'date_processed')

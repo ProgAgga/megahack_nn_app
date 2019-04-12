@@ -19,6 +19,7 @@ urlpatterns.extend([
     path('api/dealers/<int:id>', DealerDetailView.as_view()),
     path('api/offers/<int:id>', OfferDetailView.as_view()),
     path('api/orders', OffersOrdersListView.as_view()),
+    path('api/orders/<int:id>', OfferOrderDetailView.as_view()),
    # path('api/check_offer', )
 ])
 
