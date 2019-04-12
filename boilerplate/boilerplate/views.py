@@ -44,5 +44,6 @@ class ClientDetailView(gr.RetrieveAPIView):
 
 
 # mock view, SHOULD BE APIView
-class OrdersListView(gr.ListAPIView):
-    pass
+class OffersOrdersListView(gr.ListCreateAPIView):
+    queryset = OfferOrder.objects.all()
+    serializer_class = OfferOrderSerializer

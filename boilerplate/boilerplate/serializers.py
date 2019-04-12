@@ -20,3 +20,10 @@ class DealerSerializer(sz.ModelSerializer):
         model = Dealer
         fields = ('id', 'name')
 
+
+class OfferOrderSerializer(sz.ModelSerializer):
+    offer = sz.PrimaryKeyRelatedField(read_only=True)
+
+    class Meta:
+        model = OfferOrder
+        fields = ('offer', 'result', 'date_created', 'date_processed', 'id_hash')
