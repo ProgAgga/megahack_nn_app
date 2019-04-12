@@ -1,1 +1,1 @@
-{"status":"done","error":"ModuleNotFoundError","message":"Module not found: Error: Can't resolve './App' in 'C:\\Users\\pbaranov\\projects\\hackaton\\boilerplate\\assets\\js'","chunks":{"main":[{"name":"main-ad4da3dcd305c491815f.js","path":"C:\\Users\\pbaranov\\projects\\hackaton\\boilerplate\\assets\\bundles\\main-ad4da3dcd305c491815f.js"}]}}
+{"status":"done","chunks":{"main":[{"name":"main-ad4da3dcd305c491815f.js","path":"/home/witcher136/megahack_nn_app/boilerplate/assets/bundles/main-ad4da3dcd305c491815f.js"}]}}
