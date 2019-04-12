@@ -13,6 +13,27 @@ class SexChoices:
     )
 
 
+class SourceTypeChoices:
+    SQL = 'SQL'
+    REDIS = 'REDIS'
+    HTTP = 'HTTP'
+    CHOICES = (
+        (SQL, 'SQL'),
+        (REDIS, 'Redis'),
+        (HTTP, 'HTTP')
+    )
+
+
+class Source(md.Model):
+    database = md.CharField(max_length=100, null=True)
+    name = md.CharField(max_length=100, null=False)
+    port = md.IntegerField(null=False)
+    host = md.CharField(max_length=100, null=False)
+    username = md.CharField(max_length=100, null=False)
+    password = md.CharField(max_length=100, null=False)
+    type = md.CharField(max_length=10, choices=SourceTypeChoices.CHOICES)
+
+
 # Диллер, продающий симкарты и предлагающий акции
 class Dealer(md.Model):
     name = md.CharField(max_length=100, null=False, unique=True)

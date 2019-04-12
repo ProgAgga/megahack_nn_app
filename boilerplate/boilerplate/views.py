@@ -15,12 +15,23 @@ class ClientDetailView(gr.RetrieveAPIView):
     lookup_field = 'id'
 
 
-class OfferListView(gr.ListAPIView):
+class SourcesListView(gr.ListAPIView):
+    queryset = Source.objects.all()
+    serializer_class = SourceSerializer
+
+
+class SourceDetailView(gr.RetrieveAPIView):
+    queryset = Source.objects.all()
+    serializer_class = SourceSerializer
+    lookup_field = 'id'
+
+
+class OffersListView(gr.ListAPIView):
     queryset = Offer.objects.all()
     serializer_class = OfferSerializer
 
 
-class DealerListView(gr.ListAPIView):
+class DealersListView(gr.ListAPIView):
     queryset = Dealer.objects.all()
     serializer_class = DealerSerializer
 

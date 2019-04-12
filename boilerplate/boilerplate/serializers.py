@@ -29,3 +29,9 @@ class OfferOrderSerializer(sz.ModelSerializer):
     class Meta:
         model = OfferOrder
         fields = ('offer', 'client', 'dealer', 'id_hash', 'result', 'date_created', 'date_processed')
+
+
+class SourceSerializer(sz.ModelSerializer):
+    class Meta:
+        model = Source
+        fields = ('id', 'name', 'port', 'host', 'username', 'password', 'type', 'database')
