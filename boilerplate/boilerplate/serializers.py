@@ -22,3 +22,9 @@ class DealerSerializer(sz.ModelSerializer):
         model = Dealer
         fields = ('id', 'name')
 
+
+class SourceSerializer(sz.ModelSerializer):
+    class Meta:
+        model = Source
+        fields = ('id', 'name', 'port', 'host', 'username', 'password', 'type', 'database')
+

@@ -10,14 +10,16 @@ urlpatterns = [
 ]
 
 urlpatterns.extend([
-    path('api/offers', OfferListView.as_view()),
+    path('api/offers', OffersListView.as_view()),
    # path('api/options', ),
    # path('api/sources', ),
-    path('api/dealers', DealerListView.as_view()),
+    path('api/dealers', DealersListView.as_view()),
     path('api/clients', ClientsListView.as_view()),
+    path('api/sources', SourcesListView.as_view()),
     path('api/clients/<int:id>', ClientDetailView.as_view()),
     path('api/dealers/<int:id>', DealerDetailView.as_view()),
-    path('api/offers/<int:id>', OfferDetailView.as_view())
+    path('api/offers/<int:id>', OfferDetailView.as_view()),
+    path('api/sources/<int:id>', SourceDetailView.as_view())
    # path('api/orders', ),
    # path('api/check_offer', )
 ])

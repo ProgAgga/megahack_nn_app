@@ -7,4 +7,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         for name in self.list_of_names:
-            Dealer(name=name).save()
+            try:
+                Dealer(name=name).save()
+            except Dealer.IntegrityError:
+                pass
