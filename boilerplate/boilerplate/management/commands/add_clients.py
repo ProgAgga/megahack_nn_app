@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from boilerplate.models import Client
+from boilerplate.models import Client, Dealer
 import datetime
 import itertools
 import random
@@ -11,6 +11,7 @@ class Command(BaseCommand):
     list_of_last_names = ['Иванов', 'Петров', 'Сидоров', 'Ульянов', 'Бесчастнов', 'Ковалев', 'Трубов']
     list_of_sex = ['M', 'F', 'NB', None]
     list_of_ages = [19, 23, 26, 56, 92, 14]
+    list_of_dealers = Dealer.objects.all().values('id')
 
     @staticmethod
     def date_generator():
@@ -31,4 +32,6 @@ class Command(BaseCommand):
             age = random.choice(self.list_of_ages)
             date = random.choice(list_of_dates)
             phone = self.number_generator()
-            Client(name=name, sex=sex, age=age, date_of_admission=date, phone=phone).save()
+            dealer_id = random.choice(self.list_of_dealers)['id']
+            dealer = Dealer.objects.filter(id=dealer_id).get()
+            Client(name=name, sex=sex, age=age, date_of_admission=date, phone=phone, dealer=dealer).save()
