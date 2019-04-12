@@ -19,4 +19,4 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         for name in self.list_of_names:
             due_date = self.date_generator()
-            Offer(name=name, due_date=due_date, options=options).save()
+            Offer(name=name, due_date=due_date, options=self.options).save()
