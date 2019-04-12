@@ -36,3 +36,18 @@ class Options(md.Model):
 # Диллер, продающий симкарты и предлагающий акции
 class Dealer(md.Model):
     name = md.CharField(max_length=100, null=False, unique=True)
+
+
+class OfferOrderResultChoices:
+    SUCCESS = 'Success'
+    FAIL = 'Fail'
+    PENDING = 'Pending'
+    CHOICES = (
+        (SUCCESS, 'S'),
+        (FAIL, 'F'),
+        (PENDING, 'P')
+    )
+
+
+class OfferOrder(md.Model):
+    result = md.CharField(max_length=3, choices=OfferOrderResultChoices.CHOICES)
