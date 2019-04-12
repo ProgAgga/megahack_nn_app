@@ -31,5 +31,4 @@ class Command(BaseCommand):
             age = random.choice(self.list_of_ages)
             date = random.choice(list_of_dates)
             phone = self.number_generator()
-            print(phone)
             Client(name=name, sex=sex, age=age, date_of_admission=date, phone=phone).save()
