@@ -5,7 +5,6 @@ from boilerplate.validations.redismodule import execute_query as redis_query
 def validate_option_definition(option):
     pass
 
-
 def run_option(client, option):
     option = Options.objects.filter(pk=option).first()
     # what if None? TODO
@@ -20,7 +19,6 @@ def run_option(client, option):
     elif source.type == 'REDIS':
         redis_query(source, 'boilerplate_client',
                       option.options['column'], client)
-
 
 
 def validate_offer(client_id, dealer_id, offer_id):
