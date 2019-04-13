@@ -23,7 +23,6 @@ def run_option(client, option):
     operator = option.options['operator']
     value = option.options['value']
     # сравнить value и result используя operator
-
     if operator == '>':
         return result > value
     elif operator == '==':
@@ -34,10 +33,6 @@ def run_option(client, option):
         return result < value
     elif operator == '<=':
         return result <= value
-
-
-
-
 
 
 def validate_offer(client_id, dealer_id, offer_id):
