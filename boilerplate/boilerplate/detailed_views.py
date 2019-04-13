@@ -51,3 +51,9 @@ class OfferOrderDetailView(gr.RetrieveAPIView):
     queryset = OfferOrder.objects.all()
     serializer_class = OfferOrderSerializer
     lookup_field = 'id'
+
+
+class OptionsDetailView(gr.RetrieveAPIView):
+    queryset = Options.objects.all()
+    serializer_class = OptionsSerializer
+    lookup_field = 'id'

@@ -29,3 +29,8 @@ class OffersOrdersListView(gr.ListCreateAPIView):
     queryset = OfferOrder.objects.all()
     serializer_class = OfferOrderSerializer
 
+
+class OptionsListView(gr.ListCreateAPIView):
+    queryset = Options.objects.all()
+    serializer_class = OptionsSerializer
+

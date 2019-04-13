@@ -63,6 +63,8 @@ class Offer(md.Model):
 # Критерии по которым определяется подходит ли акция абоненту
 class Options(md.Model):
     options = pg.JSONField(null=False)
+    description = md.CharField(max_length=100, null=True)
+    sources = md.ForeignKey(Source, on_delete=md.CASCADE, null=False)
 
 
 class OfferOrderResultChoices:
