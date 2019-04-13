@@ -3,9 +3,7 @@ import hashlib
 from rest_framework import generics as gr
 from rest_framework.response import Response
 
-from boilerplate.models import *
 from boilerplate.serializers import *
-from rest_framework import mixins as mx
 
 
 class ClientsListView(gr.ListCreateAPIView):

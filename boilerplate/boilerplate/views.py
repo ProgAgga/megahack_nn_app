@@ -3,8 +3,6 @@ import json
 from django import views as vw
 from django.http import HttpResponse
 
-from boilerplate.models import Client, Dealer, Offer
-
 from boilerplate.validations.offer_validation import validate_offer
 
 
