@@ -5,20 +5,34 @@ from boilerplate.validations.redismodule import execute_query as redis_query
 def validate_option_definition(option):
     pass
 
+
 def run_option(client, option):
     option = Options.objects.filter(pk=option).first()
     # what if None? TODO
     if not option:
         return True
-    source = Source.objects.filter(pk=option.sources).first()
+    source = option.sources
     if not source:
         return True
     if source.type == 'SQL':
-        sql_query(source, 'boilerplate_client',
-                      option.options['column'], client)
+        query = sql_query
     elif source.type == 'REDIS':
-        redis_query(source, 'boilerplate_client',
-                      option.options['column'], client)
+        query = redis_query
+
+    result = query(source, option.options['column'], client)
+    operator = option.options['operator']
+    value = option.options['value']
+    # сравнить value и result используя operator
+    if operator == '>':
+        return result > value
+    elif operator == '==':
+        return result == value
+    elif operator == '>=':
+        return result >= value
+    elif operator == '<':
+        return result < value
+    elif operator == '<=':
+        return result <= value
 
 
 def validate_offer(client_id, dealer_id, offer_id):
