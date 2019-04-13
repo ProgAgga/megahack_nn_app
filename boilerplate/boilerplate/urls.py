@@ -9,6 +9,8 @@ from boilerplate.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='index.html')),
+    path(r'.*', TemplateView.as_view(template_name='index.html'))
+    
 ]
 
 urlpatterns.extend([

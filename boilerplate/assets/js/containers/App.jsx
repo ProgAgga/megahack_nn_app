@@ -1,13 +1,15 @@
 import React from "react"
-import Header from "./Header";
-import Main from "./Main";
 
+import MainComponent from '../containers/mainComponent/mainComponent';
+import NavigationBar from './NavigationBar/NavigationBar'
 
 export default class App extends React.Component{
     render(){
-        return <>
-            <Header />
-            <Main />
-        </>
+        return (
+            <>
+            <NavigationBar/>
+            <MainComponent/>
+            </>
+        );
     }
 }
