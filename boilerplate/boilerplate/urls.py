@@ -24,7 +24,6 @@ urlpatterns.extend([
     path('api/orders/<int:id>', OfferOrderDetailView.as_view()),
     path('api/options', OptionsListView.as_view()),
     path('api/options/<int:id>', OptionsDetailView.as_view()),
-   # path('api/check_offer', )
 ])
 
 urlpatterns.extend([
