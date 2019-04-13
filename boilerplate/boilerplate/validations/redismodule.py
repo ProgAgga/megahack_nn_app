@@ -2,10 +2,9 @@
 from redis import Redis
 
 
-def execute_query(source, table, column, client):
-    connection = f"postgresql://{source.user}{source.password}@" \
-        f"{source.host}:{source.port}/{source.database}"
-    engine = sa.create_engine(connection)
-    query = sa.text(f"select {column} from {table} where id={client.id}")
-    result = engine.execute(query)
+def execute_query(source, column, client):
+    r = Redis(host=source.host, port=source.port, db=source.database)
+    result = r.hget(client.id, column)
     print(result)
+    return result
+

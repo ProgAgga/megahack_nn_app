@@ -15,11 +15,12 @@ def run_option(client, option):
     if not source:
         return True
     if source.type == 'SQL':
-        sql_query(source, 'boilerplate_client',
-                      option.options['column'], client)
+        query = sql_query
     elif source.type == 'REDIS':
-        redis_query(source, 'boilerplate_client',
-                      option.options['column'], client)
+        query = redis_query
+    result = query(source, option.options['column'], client)
+
+
 
 
 
