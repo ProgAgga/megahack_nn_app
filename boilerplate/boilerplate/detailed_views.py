@@ -6,30 +6,45 @@ from boilerplate.serializers import *
 
 
 class ClientDetailView(gr.RetrieveAPIView):
+    """
+        Get Client by ID
+    """
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
     lookup_field = 'id'
 
 
 class SourceDetailView(gr.RetrieveAPIView):
+    """
+        Get Source by ID
+    """
     queryset = Source.objects.all()
     serializer_class = SourceSerializer
     lookup_field = 'id'
 
 
 class DealerDetailView(gr.RetrieveAPIView):
+    """
+        Get Dealer by ID
+    """
     queryset = Dealer.objects.all()
     serializer_class = DealerSerializer
     lookup_field = 'id'
 
 
 class ClientDetailView(gr.RetrieveAPIView):
+    """
+        Get Client by ID
+    """
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
     lookup_field = 'id'
 
 
 class OfferDetailView(gr.RetrieveDestroyAPIView):
+    """
+        Offer by ID
+    """
     queryset = Offer.objects.all()
     serializer_class = OfferSerializer
     lookup_field = 'id'
@@ -47,12 +62,18 @@ class OfferDetailView(gr.RetrieveDestroyAPIView):
 
 
 class OfferOrderDetailView(gr.RetrieveAPIView):
+    """
+        Get Offer by ID
+    """
     queryset = OfferOrder.objects.all()
     serializer_class = OfferOrderSerializer
     lookup_field = 'id'
 
 
 class OptionsDetailView(gr.RetrieveDestroyAPIView):
+    """
+        Option by ID
+    """
     queryset = Options.objects.all()
     serializer_class = OptionsSerializer
     lookup_field = 'id'

@@ -7,26 +7,41 @@ from boilerplate.serializers import *
 
 
 class ClientsListView(gr.ListCreateAPIView):
+    """
+        Clients
+    """
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
 
 
 class SourcesListView(gr.ListCreateAPIView):
+    """
+        Sources - databases
+    """
     queryset = Source.objects.all()
     serializer_class = SourceSerializer
 
 
 class OffersListView(gr.ListCreateAPIView):
+    """
+        Offers
+    """
     queryset = Offer.objects.all()
     serializer_class = OfferSerializer
 
 
 class DealersListView(gr.ListCreateAPIView):
+    """
+        Dealers
+    """
     queryset = Dealer.objects.all()
     serializer_class = DealerSerializer
 
 
 class OffersOrdersListView(gr.ListCreateAPIView):
+    """
+        Pool of Orders
+    """
     queryset = OfferOrder.objects.all()
     serializer_class = OfferOrderSerializer
 
@@ -65,5 +80,8 @@ class OffersOrdersListView(gr.ListCreateAPIView):
 
 
 class OptionsListView(gr.ListCreateAPIView):
+    """
+        Options - criteria for adding offer
+    """
     queryset = Options.objects.all()
     serializer_class = OptionsSerializer

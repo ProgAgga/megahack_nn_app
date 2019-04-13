@@ -7,6 +7,10 @@ from boilerplate.validations.offer_validation import validate_offer
 
 
 class CheckOffer(vw.View):
+    """
+        create:
+            Check the ability of making offer
+    """
 
     def post(self, request):
         body_unicode = request.body.decode('utf-8')
