@@ -4,6 +4,7 @@ from django.views.generic import TemplateView
 
 from boilerplate.detailed_views import *
 from boilerplate.list_views import *
+from boilerplate.views import  *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +25,10 @@ urlpatterns.extend([
     path('api/options', OptionsListView.as_view()),
     path('api/options/<int:id>', OptionsDetailView.as_view()),
    # path('api/check_offer', )
+])
+
+urlpatterns.extend([
+    path('api/check-offer', CheckOffer.as_view())
 ])
 
 urlpatterns.append(re_path('.*', TemplateView.as_view(template_name='index.html')))
