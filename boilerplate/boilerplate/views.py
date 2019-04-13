@@ -1,18 +1,15 @@
-from django import views as vw
-from boilerplate.validations.redismodule import execute_query as redis_query
-from boilerplate.models import Source, Client
+import json
 
-from boilerplate.validations.sqlmodule import execute_query as query
-from boilerplate.validations.offer_validation import run_option
-from boilerplate.models import Source
+from django import views as vw
+
+from boilerplate.models import Client, Dealer, Offer
+
+from boilerplate.validations.offer_validation import validate_offer
 
 
 class CheckOffer(vw.View):
     def post(self, request):
-        '''source = Source.objects.filter(type="REDIS").first()
-        client = Client.objects.filter(id=5).first()
-        redis_query(source,'calls',client)'''
-
-        client = Client.objects.filter(id=1).first()
-        print(run_option(client, 1))
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+        result = validate_offer(body['client'], body['dealer'], body['offer'])
 
