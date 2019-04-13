@@ -1,5 +1,6 @@
 import React from 'react';
 import Moment from 'react-moment';
+import moment from 'moment';
 
 import './Order.scss';
 //import { transformData } from '../../../../helpers/transformDataHelper';
@@ -16,19 +17,15 @@ class Order extends React.Component {
     render() {
         return(
             <div className="singleOrder">
-                <p>{this.props.client.phone}</p>
-                <p>{this.props.offer.name}</p>
-                <p>{this.convertStatus(this.props.data.status)}</p>
-                <p>  
-                    <Moment format="MMMM Do YYYY, h:mm:ss a" withTitle>
-                        {this.props.date_created}
-                    </Moment>
-                </p>
-                <p>
-                    <Moment format="MMMM Do YYYY, h:mm:ss a" withTitle>
-                        {this.props.data.data_processed}
-                    </Moment>
-                </p>
+                <div className="client">{this.props.client.phone}</div>
+                <div className="clientOrder">{this.props.offer.name}</div>
+                <div className="status">{this.convertStatus(this.props.data.status)}</div>
+                <div className="startDate">  
+                    {moment(this.props.data.date_created).format('MMMM Do YYYY, h:mm:ss a')}
+                </div>
+                <div className="finishDate">
+                    {moment(this.props.data.data_processed).format('MMMM Do YYYY, h:mm:ss a')}
+                </div>
             </div>
         );
     }
@@ -38,16 +35,11 @@ class Order extends React.Component {
         switch (status){
             case "F": tmp="Отклонено";
             break;
-            case "S": tmp = "Принято";
+            case "S": tmp = "Одобрено";
             break;
             case "P": tmp="В обработке";
             break;
         }
-        return tmp;
-    }
-
-    convertOffer(offer) {
-        var tmp = '';
         return tmp;
     }
 }

@@ -32,13 +32,15 @@ class OrderManagment extends React.Component {
     render() {
         return(
             <>
+            <div className="orderTable">
                 <div className="tableHeader">
-                    <div className="title">client</div>
-                    <div className="title">order</div> 
-                    <div className="title">status</div> 
-                    <div className="title">start date</div> 
-                    <div className="title">finish date</div> 
+                    <div className="client" className="title">client</div>
+                    <div className="clientOrder" className="title">order</div> 
+                    <div className="status" className="title">status</div> 
+                    <div className="startDate" className="title">start date</div> 
+                    <div className="finishDate" className="title">finish date</div> 
                 </div>
+                <div className="separator"/>
                 {this.state.orders.length !== 0 && this.state.clients.length !== 0 && this.state.offers.length !== 0?
                     this.state.orders.map(
                         (order_data,i) => {
@@ -57,6 +59,7 @@ class OrderManagment extends React.Component {
                         }
                     ):""
                 }
+                </div>
            </>
         );
     }
