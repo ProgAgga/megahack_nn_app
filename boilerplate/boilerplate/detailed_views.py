@@ -53,7 +53,18 @@ class OfferOrderDetailView(gr.RetrieveAPIView):
     lookup_field = 'id'
 
 
-class OptionsDetailView(gr.RetrieveAPIView):
+class OptionsDetailView(gr.RetrieveDestroyAPIView):
     queryset = Options.objects.all()
     serializer_class = OptionsSerializer
     lookup_field = 'id'
+
+    def destroy(self, request, *args, **kwargs):
+        try:
+            instance = self.get_object()
+        except Http404:
+            return Response({'result': False})
+        serializer = self.get_serializer(instance)
+        data = serializer.data
+        data['result'] = True
+        self.perform_destroy(instance)
+        return Response(data)
