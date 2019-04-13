@@ -9,22 +9,27 @@ def validate_option_definition(option):
 
 def run_option(client, option):
     option = Options.objects.filter(pk=option).first()
+    print(option.description)
     if not option:
         return True
     source = option.sources
+    print(source.name)
     if not source:
         return True
     if source.type == 'SQL':
         query = sql_query
     elif source.type == 'REDIS':
         query = redis_query
-
+    print(query)
     try:
         result = query(source, option.options['column'], client)
     except:
         return False
     operator = option.options['operator']
     value = option.options['value']
+    print(operator)
+    print(value)
+    print(result)
     # сравнить value и result используя operator
     try:
         if operator == '>':
