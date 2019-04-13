@@ -7,4 +7,3 @@ def execute_query(source, column, client):
     result = r.hget(client.id, column)
     print(result)
     return result
-
