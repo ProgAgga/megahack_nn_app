@@ -7,5 +7,4 @@ def execute_query(source, column, client):
     engine = sa.create_engine(connection)
     query = sa.text(f"select {column} from {source.table} where id={client.id}")
     result = engine.execute(query).fetchone()[0]
-    print(result)
     return result
