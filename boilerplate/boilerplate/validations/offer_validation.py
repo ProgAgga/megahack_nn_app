@@ -5,6 +5,7 @@ from boilerplate.validations.redismodule import execute_query as redis_query
 def validate_option_definition(option):
     pass
 
+
 def run_option(client, option):
     option = Options.objects.filter(pk=option).first()
     # what if None? TODO
@@ -17,7 +18,24 @@ def run_option(client, option):
         query = sql_query
     elif source.type == 'REDIS':
         query = redis_query
+
     result = query(source, option.options['column'], client)
+    operator = option.options['operator']
+    value = option.options['value']
+    # сравнить value и result используя operator
+
+    if operator == '>':
+        return result > value
+    elif operator == '==':
+        return result == value
+    elif operator == '>=':
+        return result >= value
+    elif operator == '<':
+        return result < value
+    elif operator == '<=':
+        return result <= value
+
+
 
 
 
