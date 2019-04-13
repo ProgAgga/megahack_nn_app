@@ -31,6 +31,3 @@ def validate_offer(client_id, dealer_id, offer_id):
         return False
     for option in offer.options:
         run_option(client, option)
-
-
-
