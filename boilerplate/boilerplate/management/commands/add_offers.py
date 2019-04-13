@@ -1,10 +1,10 @@
+import datetime
+import random
+
 from django.core.management.base import BaseCommand
 from django.db import IntegrityError
 
 from boilerplate.models import Offer, Options
-
-import datetime
-import random
 
 
 class Command(BaseCommand):

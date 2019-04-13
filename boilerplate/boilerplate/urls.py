@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 
 from boilerplate.detailed_views import *
 from boilerplate.list_views import *
-from boilerplate.views import  *
+from boilerplate.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
