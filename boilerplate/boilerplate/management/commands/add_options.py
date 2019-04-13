@@ -1,8 +1,9 @@
+import random
+
 from django.core.management.base import BaseCommand
+
 from boilerplate.models import Options, Source
 
-import datetime
-import random
 
 # option = {'column', 'operator', 'value'}
 

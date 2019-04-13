@@ -1,9 +1,10 @@
-from django.core.management.base import BaseCommand
-from boilerplate.models import OfferOrder, Offer, Client, Dealer, OfferOrderStatusChoices
-
 import datetime
-import random
 import hashlib
+import random
+
+from django.core.management.base import BaseCommand
+
+from boilerplate.models import OfferOrder, Offer, Client, Dealer, OfferOrderStatusChoices
 
 
 class Command(BaseCommand):

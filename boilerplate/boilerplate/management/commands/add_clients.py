@@ -1,9 +1,11 @@
-from django.core.management.base import BaseCommand
-from boilerplate.models import Client, Dealer
 import datetime
 import itertools
 import random
 import string
+
+from django.core.management.base import BaseCommand
+
+from boilerplate.models import Client, Dealer
 
 
 class Command(BaseCommand):

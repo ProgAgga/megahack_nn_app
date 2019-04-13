@@ -1,11 +1,9 @@
-from django.core.management.base import BaseCommand
-from django.db import IntegrityError
-
-from redis import Redis
-from boilerplate.models import Client
-
-import datetime
 import random
+
+from django.core.management.base import BaseCommand
+from redis import Redis
+
+from boilerplate.models import Client
 
 
 class Command(BaseCommand):
