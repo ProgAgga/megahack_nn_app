@@ -24,7 +24,6 @@ def run_option(client, option):
     operator = option.options['operator']
     value = option.options['value']
     # сравнить value и result используя operator
-
     if operator == '>':
         return result > value
     elif operator == '==':
@@ -37,10 +36,6 @@ def run_option(client, option):
         return result <= value
 
 
-
-
-
-
 def validate_offer(client_id, dealer_id, offer_id):
     client = Client.objects.filter(id=client_id).first()
     dealer = Dealer.objects.filter(id=dealer_id).first()
@@ -49,5 +44,16 @@ def validate_offer(client_id, dealer_id, offer_id):
         return False
     if dealer.id not in offer.dealers:
         return False
+    valid = []
+    invalid = []
     for option in offer.options:
-        run_option(client, option)
+        passed = run_option(client, option)
+        if passed:
+            valid.append(option)
+        else:
+            invalid.append(option)
+    if invalid:
+        return False
+    else:
+        return True
+
