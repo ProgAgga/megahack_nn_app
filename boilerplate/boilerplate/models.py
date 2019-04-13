@@ -25,6 +25,7 @@ class SourceTypeChoices:
 
 
 class Source(md.Model):
+    table = md.CharField(max_length=100, null=True)
     database = md.CharField(max_length=100, null=True)
     name = md.CharField(max_length=100, null=False)
     port = md.IntegerField(null=False)

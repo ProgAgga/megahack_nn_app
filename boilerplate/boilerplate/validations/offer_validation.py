@@ -1,6 +1,6 @@
 from boilerplate.models import *
-from boilerplate.validations.sqlmodule import execute_query
-
+from boilerplate.validations.sqlmodule import execute_query as sql_query
+from boilerplate.validations.redismodule import execute_query as redis_query
 
 def validate_option_definition(option):
     pass
@@ -11,8 +11,16 @@ def run_option(client, option):
     # what if None? TODO
     if not option:
         return True
-    execute_query(option.sources, 'boilerplate_client',
-                  option.options['column'], client)
+    source = Source.objects.filter(pk=option.sources).first()
+    if not source:
+        return True
+    if source.type == 'SQL':
+        sql_query(source, 'boilerplate_client',
+                      option.options['column'], client)
+    elif source.type == 'REDIS':
+        redis_query(source, 'boilerplate_client',
+                      option.options['column'], client)
+
 
 
 def validate_offer(client_id, dealer_id, offer_id):
