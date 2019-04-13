@@ -10,7 +10,7 @@ import random
 class Command(BaseCommand):
     list_of_columns = ['age', 'date_of_admission', 'sex']
     list_of_operators = ['>', '>=', '==']
-    list_of_values = ['18', '0:3:0', 'M']
+    list_of_values = [18, '0:3:0', 'M']
     list_of_sources = Source.objects.all().values('id')
     list_of_descriptions = ['Совершеннолетний', 'Больше трех месяцев', 'Мужчина']
 
