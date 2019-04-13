@@ -11,7 +11,7 @@ def run_option(client, option):
     # what if None? TODO
     if not option:
         return True
-    source = Source.objects.filter(pk=option.sources).first()
+    source = option.sources
     if not source:
         return True
     if source.type == 'SQL':
