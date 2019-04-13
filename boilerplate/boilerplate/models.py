@@ -30,8 +30,8 @@ class Source(md.Model):
     name = md.CharField(max_length=100, null=False)
     port = md.IntegerField(null=False)
     host = md.CharField(max_length=100, null=False)
-    username = md.CharField(max_length=100, null=False)
-    password = md.CharField(max_length=100, null=False)
+    username = md.CharField(max_length=100, null=True)
+    password = md.CharField(max_length=100, null=True)
     type = md.CharField(max_length=10, choices=SourceTypeChoices.CHOICES)
 
 
