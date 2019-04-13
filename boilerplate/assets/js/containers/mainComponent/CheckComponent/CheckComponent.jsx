@@ -4,18 +4,18 @@ import './CheckComponent.scss'
 
 class CheckComponent extends React.Component {
 
-    compareImage() {
-    //    var tmp = false;
-    //    if(tmp) {
-           return (
-                <img className="imageResult" src={require('./times-solid.svg')}  width="50" height="50"/>
-           );
-    //    }
-    //    if(!tmp) {
-    //     return <img src={require('./times-solid.svg')}  width="50" height="50"/>; 
-    //    }
+    // compareImage() {
+    // //    var tmp = false;
+    // //    if(tmp) {
+    //        return (
+    //             <img className="imageResult" src={require('./times-solid.svg')}  width="50" height="50"/>
+    //        );
+    // //    }
+    // //    if(!tmp) {
+    // //     return <img src={require('./times-solid.svg')}  width="50" height="50"/>; 
+    // //    }
 
-    }
+    // }
 
     render() {
         return(
@@ -36,7 +36,7 @@ class CheckComponent extends React.Component {
 {/* блок ниже отображается после получения ответа о валидности опции для клиента */}
 
                 <div className="result">                   
-                    {this.compareImage()}
+                    {/* {this.compareImage()} */}
                     <progress className="loadingBlock" max="100" value="75" />
                     <div className="optionsBlock">
                         <div className="approvedUserSettings">
@@ -52,7 +52,5 @@ class CheckComponent extends React.Component {
         );
     } 
 }
-
-
 
 export default CheckComponent;

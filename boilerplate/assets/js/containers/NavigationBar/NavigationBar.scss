@@ -3,7 +3,7 @@
     margin-top: 20px;
     padding-bottom: 2px;
     padding-top: 10px;
-    border-radius: 50px 50px 50px 50px;
+    border-radius: 50px;
 }
 
 .navBlock {
@@ -12,19 +12,12 @@
   justify-content: center;
 }
 
-.baseContainer {
-  display: flex; 
-  flex-direction: column;
-}
-
-a{
+a {
     text-decoration: none;
-   
   }
   
   a:hover {
     color: #b99b39; 
-   
   }
 
   .dropdown {
