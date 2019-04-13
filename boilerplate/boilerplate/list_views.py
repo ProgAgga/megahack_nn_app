@@ -1,60 +1,29 @@
-import hashlib
-
 from rest_framework import generics as gr
 from rest_framework.response import Response
 
 from boilerplate.models import *
 from boilerplate.serializers import *
+from rest_framework import mixins as mx
 
 
-class ClientsListView(gr.ListAPIView):
+class ClientsListView(gr.ListCreateAPIView):
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
 
 
-class ClientDetailView(gr.RetrieveAPIView):
-    queryset = Client.objects.all()
-    serializer_class = ClientSerializer
-    lookup_field = 'id'
-
-
-class SourcesListView(gr.ListAPIView):
+class SourcesListView(gr.ListCreateAPIView):
     queryset = Source.objects.all()
     serializer_class = SourceSerializer
 
 
-class SourceDetailView(gr.RetrieveAPIView):
-    queryset = Source.objects.all()
-    serializer_class = SourceSerializer
-    lookup_field = 'id'
-
-
-class OffersListView(gr.ListAPIView):
+class OffersListView(gr.ListCreateAPIView):
     queryset = Offer.objects.all()
     serializer_class = OfferSerializer
 
 
-class DealersListView(gr.ListAPIView):
+class DealersListView(gr.ListCreateAPIView):
     queryset = Dealer.objects.all()
     serializer_class = DealerSerializer
-
-
-class OfferDetailView(gr.RetrieveAPIView):
-    queryset = Offer.objects.all()
-    serializer_class = OfferSerializer
-    lookup_field = 'id'
-
-
-class DealerDetailView(gr.RetrieveAPIView):
-    queryset = Dealer.objects.all()
-    serializer_class = DealerSerializer
-    lookup_field = 'id'
-
-
-class ClientDetailView(gr.RetrieveAPIView):
-    queryset = Client.objects.all()
-    serializer_class = ClientSerializer
-    lookup_field = 'id'
 
 
 class OffersOrdersListView(gr.ListCreateAPIView):
@@ -80,7 +49,8 @@ class OffersOrdersListView(gr.ListCreateAPIView):
         return Response(self.get_serializer_class()(offer_order).data)
 
 
-class OfferOrderDetailView(gr.RetrieveAPIView):
-    queryset = OfferOrder.objects.all()
-    serializer_class = OfferOrderSerializer
-    lookup_field = 'id'
+
+class OptionsListView(gr.ListCreateAPIView):
+    queryset = Options.objects.all()
+    serializer_class = OptionsSerializer
+

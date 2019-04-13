@@ -48,16 +48,23 @@ class Client(md.Model):
     dealer = md.ForeignKey(Dealer, on_delete=md.SET_NULL, null=True)
 
 
+def create_dealer_list():
+    return [d['id'] for d in Dealer.objects.all().values('id')]
+
+
 # Акция, которую предлагают абоненту
 class Offer(md.Model):
     name = md.CharField(max_length=100, null=False, unique=True)
-    due_date = md.DateTimeField(auto_now=True)
+    due_date = md.DateTimeField(default=None, null=True)
     options = pg.JSONField(null=True)
+    dealers = pg.ArrayField(base_field=md.IntegerField(), default=create_dealer_list)
 
 
 # Критерии по которым определяется подходит ли акция абоненту
 class Options(md.Model):
     options = pg.JSONField(null=False)
+    description = md.CharField(max_length=100, null=True)
+    sources = md.ForeignKey(Source, on_delete=md.CASCADE, null=False)
 
 
 class OfferOrderStatusChoices:
