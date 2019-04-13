@@ -17,7 +17,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('docs/', schema_view),
     path('', TemplateView.as_view(template_name='index.html')),
-
 ]
 
 urlpatterns.extend([

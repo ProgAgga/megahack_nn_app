@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'boilerplate.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'main2',
+        'NAME': 'main',
         'USER': 'user',
         'PASSWORD': 'password',
         'HOST': 'localhost',

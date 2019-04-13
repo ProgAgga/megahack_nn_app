@@ -1,0 +1,14 @@
+.tableHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top:20px;
+    padding-left: 45px;
+    padding-right: 45px;
+}
+
+.title {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+}
