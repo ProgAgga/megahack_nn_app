@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.urls import path, re_path
 from django.views.generic import TemplateView
 
-from boilerplate.views import *
+from boilerplate.detailed_views import *
+from boilerplate.list_views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),

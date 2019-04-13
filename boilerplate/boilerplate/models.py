@@ -51,7 +51,7 @@ class Client(md.Model):
 # Акция, которую предлагают абоненту
 class Offer(md.Model):
     name = md.CharField(max_length=100, null=False, unique=True)
-    due_date = md.DateTimeField(auto_now=True)
+    due_date = md.DateTimeField(default=None, null=True)
     options = pg.JSONField(null=True)
 
 
