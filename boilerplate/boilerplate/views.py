@@ -13,7 +13,6 @@ class CheckOffer(vw.View):
         client = Client.objects.filter(id=5).first()
         redis_query(source,'calls',client)'''
 
-        source = Source.objects.filter(type="REDIS").first()
-        client = Client.objects.filter(id=5).first()
+        client = Client.objects.filter(id=1).first()
         print(run_option(client, 1))
 

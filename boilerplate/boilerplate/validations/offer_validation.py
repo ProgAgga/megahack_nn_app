@@ -15,6 +15,7 @@ def run_option(client, option):
     if not source:
         return True
     if source.type == 'SQL':
+        print('sql')
         query = sql_query
     elif source.type == 'REDIS':
         query = redis_query
