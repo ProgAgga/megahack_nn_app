@@ -18,3 +18,4 @@ class CheckOffer(vw.View):
         redis_query(source, 'calls', client)
 
         print(run_option(client, 1))
+
