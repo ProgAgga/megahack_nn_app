@@ -4,7 +4,7 @@ import './CheckComponent.scss'
 
 class CheckComponent extends React.Component {
 
-    // compareImage() {
+        // compareImage() {
     // //    var tmp = false;
     // //    if(tmp) {
     //        return (
