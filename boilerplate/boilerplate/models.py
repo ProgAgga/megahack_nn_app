@@ -1,5 +1,5 @@
-from django.db import models as md
 from django.contrib.postgres import fields as pg
+from django.db import models as md
 
 
 class SexChoices:
