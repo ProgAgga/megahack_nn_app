@@ -1,4 +1,6 @@
 from django.core.management.base import BaseCommand
+from django.db import IntegrityError
+
 from boilerplate.models import Dealer
 
 
@@ -9,5 +11,5 @@ class Command(BaseCommand):
         for name in self.list_of_names:
             try:
                 Dealer(name=name).save()
-            except Dealer.IntegrityError:
+            except IntegrityError:
                 pass

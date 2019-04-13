@@ -1,3 +1,5 @@
+import hashlib
+
 from rest_framework import generics as gr
 from rest_framework.response import Response
 
@@ -32,11 +34,26 @@ class OffersOrdersListView(gr.ListCreateAPIView):
 
     def create(self, request, *args, **kwargs):
         data = request.data
-        serializer = self.get_serializer_class()(data=data)
-        print(serializer.is_valid())
-        client = Client.objects.filter(id=data['client']).get()
-        dealer = Dealer.objects.filter(id=data['dealer']).get()
-        offer = Offer.objects.filter(id=data['offer']).get()
+        if data.get('client') is None or data.get('dealer') is None or data.get('offer') is None:
+            return Response({'error': 'Provide all fields'})
+        client = Client.objects.filter(id=data['client']).first()
+        dealer = Dealer.objects.filter(id=data['dealer']).first()
+        offer = Offer.objects.filter(id=data['offer']).first()
+
+        response = dict()
+        if not client:
+            response['client'] = f"Object with id = {data['client']} does not exist"
+        if not dealer:
+            response['dealer'] = f"Object with id = {data['dealer']} does not exist"
+        if not offer:
+            response['offer'] = f"Object with id = {data['offer']} does not exist"
+
+        if list(data.keys()) != ['client', 'dealer', 'offer']:
+            response['error'] = "Only 'client', 'dealer', 'offer' should be included in request"
+
+        if response:
+            return Response(response)
+
         id_hash = hashlib.sha256(f'{client}{dealer}{offer}'.encode()).hexdigest()
         offer_order = OfferOrder(
             offer=offer,
@@ -47,7 +64,6 @@ class OffersOrdersListView(gr.ListCreateAPIView):
         )
         offer_order.save()
         return Response(self.get_serializer_class()(offer_order).data)
-
 
 
 class OptionsListView(gr.ListCreateAPIView):

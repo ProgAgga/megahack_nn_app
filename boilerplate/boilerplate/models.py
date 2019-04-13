@@ -56,13 +56,13 @@ def create_dealer_list():
 class Offer(md.Model):
     name = md.CharField(max_length=100, null=False, unique=True)
     due_date = md.DateTimeField(default=None, null=True)
-    options = pg.ArrayField(base_field=md.IntegerField(), default=[])
+    options = pg.ArrayField(base_field=md.IntegerField(), default=list)
     dealers = pg.ArrayField(base_field=md.IntegerField(), default=create_dealer_list)
 
 
 # Критерии по которым определяется подходит ли акция абоненту
 class Options(md.Model):
-    options = pg.JSONField(null=False)
+    options = pg.JSONField(null=True)
     description = md.CharField(max_length=100, null=True)
     sources = md.ForeignKey(Source, on_delete=md.CASCADE, null=False)
 
