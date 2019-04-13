@@ -3,11 +3,8 @@ import { Link } from 'react-router-dom';
 import { Route, Redirect, Switch } from 'react-router';
 
 import OrderManagment from '../mainComponent/OrderManagment/OrderManagment';
+import CheckComponent from '../mainComponent/CheckComponent/CheckComponent';
 import './NavigationBar.scss';
-
-  const page2 = () => (
-    <div>checkPage</div>
-  )
 
   const page3 = () => (
     <div>drop down</div>
@@ -17,7 +14,7 @@ class NavigationBar extends React.Component {
     render() {
         return(
                 <div className="baseContainer">
-                    <div className="wrapper">
+                    <div className="navBlock">
                         <div className="container">
                             <ul>
                                 <Link to="/page1/">order managment</Link>
@@ -43,7 +40,7 @@ class NavigationBar extends React.Component {
                     </div>
                     <Switch>
                         <Route path="/page1/" component={OrderManagment} />
-                        <Route path="/page2/" component={page2} />
+                        <Route path="/page2/" component={CheckComponent} />
                         <Route path="/page3/" component={page3} />
                         <Route path="/">
                             <Redirect to="/page1/" />
