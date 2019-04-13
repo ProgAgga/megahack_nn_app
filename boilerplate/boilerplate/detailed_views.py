@@ -2,7 +2,6 @@ from django.http import Http404
 from rest_framework import generics as gr
 from rest_framework.response import Response
 
-from boilerplate.models import *
 from boilerplate.serializers import *
 
 
