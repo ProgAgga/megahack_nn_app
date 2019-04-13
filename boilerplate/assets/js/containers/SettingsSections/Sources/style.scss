@@ -1,0 +1,32 @@
+.headers{
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.row{
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.SourceTablecontainer{
+  display: grid;
+  .row:nth-child(even) {
+    background: #CC76B1;
+    &:hover{
+      background: #AD00FF
+    }
+  };
+  .row:nth-child(odd) {
+    background: #f97c98;
+    &:hover{
+      background: #ac2484
+    }
+  };
+}
+.sourceContainer{
+  display: grid;
+  margin: 5%;
+}
+.callCreator{
+  grid-column: 8;
+}
