@@ -60,7 +60,7 @@ class Options(md.Model):
     options = pg.JSONField(null=False)
 
 
-class OfferOrderResultChoices:
+class OfferOrderStatusChoices:
     SUCCESS = 'Success'
     FAIL = 'Fail'
     PENDING = 'Pending'
@@ -76,6 +76,6 @@ class OfferOrder(md.Model):
     client = md.ForeignKey(Client, on_delete=md.CASCADE)
     dealer = md.ForeignKey(Dealer, on_delete=md.SET_NULL, null=True)
     id_hash = md.CharField(max_length=64)
-    result = md.CharField(max_length=3, choices=OfferOrderResultChoices.CHOICES)
+    status = md.CharField(max_length=3, choices=OfferOrderStatusChoices.CHOICES)
     date_created = md.DateTimeField(auto_now=True)
     date_processed = md.DateTimeField(null=True, default=None)

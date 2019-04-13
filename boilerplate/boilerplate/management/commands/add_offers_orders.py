@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from boilerplate.models import OfferOrder, Offer, Client, Dealer, OfferOrderResultChoices
+from boilerplate.models import OfferOrder, Offer, Client, Dealer, OfferOrderStatusChoices
 
 import datetime
 import random
@@ -10,7 +10,7 @@ class Command(BaseCommand):
     list_of_dealers = Dealer.objects.all().values('id')
     list_of_offers = Offer.objects.all().values('id')
     list_of_clients = Client.objects.all().values('id')
-    list_of_results = [x[1] for x in OfferOrderResultChoices.CHOICES]
+    list_of_results = [x[1] for x in OfferOrderStatusChoices.CHOICES]
 
     @staticmethod
     def date_generator():
@@ -21,7 +21,7 @@ class Command(BaseCommand):
         for _ in range(10):
             date_created = self.date_generator()
             result = random.choice(self.list_of_results)
-            if result != OfferOrderResultChoices.PENDING:
+            if result != OfferOrderStatusChoices.PENDING:
                 date_processed = date_created + datetime.timedelta(days=random.randint(1, 10))
             else:
                 date_processed = None
@@ -36,7 +36,7 @@ class Command(BaseCommand):
                 id_hash=id_hash,
                 date_created=date_created,
                 date_processed=date_processed,
-                result=result
+                status=result
             ).save()
 
 
