@@ -19,7 +19,10 @@ class Order extends React.Component {
             <div className="singleOrder">
                 <div className="client">{this.props.client.phone}</div>
                 <div className="clientOrder">{this.props.offer.name}</div>
-                <div className="status">{this.convertStatus(this.props.data.status)}</div>
+                <div className="status">
+                    {this.convertStatus(this.props.data.status)}
+                    <div className="tooltip">{this.setToolTipMessage(this.props.data.status)}</div>
+                </div>
                 <div className="startDate">  
                     {moment(this.props.data.date_created).format('MMMM Do YYYY, h:mm:ss a')}
                 </div>
@@ -31,7 +34,8 @@ class Order extends React.Component {
     }
 
     convertStatus(status) {
-        var tmp = '';
+        let tmp = '';
+
         switch (status){
             case "F": tmp="Отклонено";
             break;
@@ -41,6 +45,20 @@ class Order extends React.Component {
             break;
         }
         return tmp;
+    }
+
+    setToolTipMessage(status) {
+        let message="";
+
+        switch (status){
+            case "F": message="ЗАМАПИТЬ НЕСОВПАВШИЕ ФАКТОРЫ!!!";
+            break;
+            case "S": message = "Все условия выполнены";
+            break;
+            case "P": message="Заказ в обработке";
+            break;
+        }
+        return message;
     }
 }
 
