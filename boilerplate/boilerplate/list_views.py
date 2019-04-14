@@ -4,7 +4,7 @@ from rest_framework import generics as gr
 from rest_framework.response import Response
 
 from boilerplate.serializers import *
-
+from boilerplate.tasks  import order_offer_validate
 
 class ClientsListView(gr.ListCreateAPIView):
     """
@@ -61,7 +61,7 @@ class OffersOrdersListView(gr.ListCreateAPIView):
         if not offer:
             response['offer'] = f"Object with id = {data['offer']} does not exist"
 
-        if list(data.keys()) != ['client', 'dealer', 'offer']:
+        if set(data.keys()) != {'client', 'dealer', 'offer'}:
             response['error'] = "Only 'client', 'dealer', 'offer' should be included in request"
 
         if response:
@@ -76,6 +76,7 @@ class OffersOrdersListView(gr.ListCreateAPIView):
             status='P'
         )
         offer_order.save()
+        order_offer_validate(offer_order.id)
         return Response(self.get_serializer_class()(offer_order).data)
 
 
