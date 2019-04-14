@@ -1,0 +1,73 @@
+version: "3"
+
+networks:
+  mgnet:
+    driver: bridge
+
+volumes:
+  postgresql:
+  postgresadmin:
+  red:
+
+services:
+  postgres:
+    restart: unless-stopped
+    image: sameersbn/postgresql:10-1
+    ports:
+      - "5432:5432"
+    environment:
+      DEBUG: "false"
+      DB_USER: user
+      DB_PASS: password
+      DB_NAME: main
+    volumes:
+      - postgresql:/var/lib/postgresql
+    networks:
+      - mgnet
+  pgadmin:
+    restart: unless-stopped
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: qwerty
+      PGADMIN_DEFAULT_PASSWORD: 12345
+    volumes:
+      - postgresadmin:/root/.pgadmin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    networks:
+      - mgnet
+    depends_on:
+      - postgres
+  red:
+    restart: unless-stopped
+    image: redis
+    entrypoint: redis-server --appendonly yes
+    volumes:
+      - red:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - mgnet
+  server:
+    restart: unless-stopped
+    command: bash -c "python manage.py migrate && ./up.sh"
+    build:
+      context: .
+      dockerfile: ./docker/server/Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      - mgnet
+    depends_on:
+      - postgres
+      - red
+  celery:
+    restart: unless-stopped
+    command: celery worker -A boilerplate
+    build:
+      context: .
+      dockerfile: ./docker/celery/Dockerfile
+    networks:
+      - mgnet
+    depends_on:
+      - red

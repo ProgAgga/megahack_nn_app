@@ -1,0 +1,28 @@
+import datetime
+import json
+import time
+
+from boilerplate.celery import app
+from boilerplate.models import OfferOrder
+from boilerplate.redis_database import redis_db
+from boilerplate.validations.offer_validation import validate_order
+
+
+@app.task(serializer='json')
+def order_offer_validate(order_id):
+    offer_order = OfferOrder.objects.filter(id=order_id).first()
+    if not offer_order:
+        return
+    status, valid, invalid = validate_order(offer_order.client.id,
+                                            offer_order.offer.id)
+    if status:
+        offer_order.status = 'S'
+    else:
+        offer_order.status = 'F'
+    offer_order.date_processed = datetime.datetime.now()
+    time.sleep(10)
+    offer_order.save()
+    redis_db.set(f'{order_id}_valid', json.dumps(valid))
+    redis_db.set(f'{order_id}_invalid', json.dumps(invalid))
+
+

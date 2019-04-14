@@ -1,0 +1,120 @@
+.Table {
+  border: 1px solid #555555;
+  background-color: #545681;
+  border-radius: 20px;
+  margin-top: 20px;
+  box-shadow: 0 1px 5px 0 gray;
+}
+
+.headers{
+  // display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  display: grid;
+  align-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 10px; 
+  text-align: center;
+  grid-template-rows: 100%;
+}
+
+.row{
+  align-items: center;
+  min-height: 40px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  text-align: center;
+  grid-template-rows: 100%;
+}
+
+.Table {
+  .row:nth-child(2n) {
+    background-color:  rgb(226, 225, 225);
+  }
+  
+  .row:nth-child(2n-1) {
+    background-color: #ffffff; /* Цвет фона */
+  }
+  
+  .row:hover {
+    background-color: #33C778;
+  }
+  
+  .row:last-child {
+    border-radius: 0 0 20px 20px;
+  }
+}
+
+
+.sourceContainer{
+  display: grid;
+  margin: 5%;
+}
+
+.callCreator{
+  grid-column: 8;
+}
+.callCreator button {
+  background-color: #dededf;
+  color: black;
+  border: 1px solid #555555;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 20px;
+}
+
+.formBlock {
+  display: flex;
+  flex-direction: column;
+  margin-left: 120px;
+  margin-right: 120px;
+}
+
+.title {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(223, 222, 222);
+}
+
+
+////OFFERS
+//.offersContainer{
+//  @extend .sourceContainer;
+//}
+//
+//.OffersTableContainer{
+//  @extend .SourceTableContainer;
+//}
+//
+//.OffersHeaders{
+//  display: grid;
+//  grid-template-columns: repeat(4, 1fr);
+//}
+//.OffersRow{
+//  @extend .row;
+//  display: grid;
+//  grid-template-columns: repeat(4, 1fr);
+//}
+////OPTIONS
+//.OptionsContainer{
+//  @extend .sourceContainer;
+//}
+//
+//.OptionsTableContainer{
+//  @extend .SourceTableContainer;
+//}
+//
+//.OptionsHeaders{
+//  display: grid;
+//  grid-template-columns: repeat(6, 1fr);
+//}
+//.OptionsRow{
+//  @extend .row;
+//  display: grid;
+//  grid-template-columns: repeat(6, 1fr);
+//}
+//

@@ -48,15 +48,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'webpack_loader',
-    'boilerplate'
+    'boilerplate',
+    'rest_framework_swagger'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -88,8 +90,12 @@ WSGI_APPLICATION = 'boilerplate.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'main',
+        'USER': 'user',
+        'PASSWORD': 'password',
+        'HOST': 'localhost' if not os.getenv('DOCKERED', False) else 'postgres',
+        'PORT': '5432',
     }
 }
 
@@ -131,3 +137,24 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Celery config
+if not os.getenv('DOCKERED', False):
+    CELERY_BROKER_URL = 'redis://localhost:6379/15'
+    CELERY_BROKER_TRANSPORT_OPTIONS = {"visibility_timeout": 3600}
+    CELERY_RESULT_BACKEND = 'redis://localhost:6379/14'
+else:
+    CELERY_BROKER_URL = 'redis://red:6379/15'
+    CELERY_BROKER_TRANSPORT_OPTIONS = {"visibility_timeout": 3600}
+    CELERY_RESULT_BACKEND = 'redis://red:6379/14'
+
+CELERY_BEAT_SCHEDULE = {
+    #"scan-orders": {
+      #  "task": "boilerplate.tasks.scan_orders",
+       # "schedule": 5
+    #},
+}
+
+CELERY_IMPORTS = [
+    "boilerplate.tasks"
+]
