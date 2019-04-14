@@ -36,7 +36,9 @@ services:
       - "${PGADMIN_PORT:-5050}:80"
     networks:
       - mgnet
-  redis:
+    depends_on:
+      - postgresql
+  red:
     restart: unless-stopped
     image: redis
     entrypoint: redis-server --appendonly yes
@@ -56,6 +58,9 @@ services:
       - "8000:8000"
     networks:
       - mgnet
+    depends_on:
+      - postgresql
+      - red
   celery:
     restart: unless-stopeed
     command: celery worker -A boilerplate
@@ -64,3 +69,5 @@ services:
       dockerfile: ./docker/celery/Dockerfile
     networks:
       - mgnet
+    depends_on:
+      - red
