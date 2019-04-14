@@ -26,8 +26,8 @@ export default class NewSourcesForm extends React.Component {
             ADD_NEW_SOURCE_BODY(this.state)
         ).then(
             response => {
-                // window.location.reload()
-                console.log(response);
+                window.location.reload()
+                // console.log(response); //FOR DEBUG ;)))
             }
         )
     }

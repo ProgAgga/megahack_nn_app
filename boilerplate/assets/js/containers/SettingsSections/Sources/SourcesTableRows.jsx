@@ -8,7 +8,7 @@ export default class SourcesTableRows extends React.Component{
         this.data = props.data;
     }
     render(){
-        return <div className="SourceTablecontainer">
+        return <div className="SourceTableContainer">
             {
                 this.props.data.map(
                     (source,i) => (

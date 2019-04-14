@@ -5,8 +5,8 @@ const customStyles = {
     content : {
         top                   : '50%',
         left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
+        right                 : '30%',
+        bottom                : '30%',
         marginRight           : '-50%',
         transform             : 'translate(-50%, -50%)'
     }
@@ -54,6 +54,7 @@ export default class ModalCaller extends React.Component {
                 >
 
                     <h2 ref={subtitle => this.subtitle = subtitle}>Новое подключение</h2>
+
                     {/*<button onClick={this.closeModal}>close</button>*/}
                     {this.props.children}
                 </Modal>

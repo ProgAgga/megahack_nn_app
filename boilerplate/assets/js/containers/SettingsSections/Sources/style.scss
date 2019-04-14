@@ -46,6 +46,7 @@
   }
 }
 
+
 .sourceContainer{
   display: grid;
   margin: 5%;
@@ -78,3 +79,42 @@
   font-weight: 500;
   color: rgb(223, 222, 222);
 }
+
+
+////OFFERS
+//.offersContainer{
+//  @extend .sourceContainer;
+//}
+//
+//.OffersTableContainer{
+//  @extend .SourceTableContainer;
+//}
+//
+//.OffersHeaders{
+//  display: grid;
+//  grid-template-columns: repeat(4, 1fr);
+//}
+//.OffersRow{
+//  @extend .row;
+//  display: grid;
+//  grid-template-columns: repeat(4, 1fr);
+//}
+////OPTIONS
+//.OptionsContainer{
+//  @extend .sourceContainer;
+//}
+//
+//.OptionsTableContainer{
+//  @extend .SourceTableContainer;
+//}
+//
+//.OptionsHeaders{
+//  display: grid;
+//  grid-template-columns: repeat(6, 1fr);
+//}
+//.OptionsRow{
+//  @extend .row;
+//  display: grid;
+//  grid-template-columns: repeat(6, 1fr);
+//}
+//
