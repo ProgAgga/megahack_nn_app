@@ -58,9 +58,9 @@ def validate_order(client_id, offer_id):
     offer = Offer.objects.filter(id=offer_id).first()
     dealer = client.dealer
     if not client or not dealer or not offer:
-        return False
+        return False, [], []
     if dealer.id not in offer.dealers:
-        return False
+        return False, [], []
     valid = []
     invalid = []
     for option in offer.options:
