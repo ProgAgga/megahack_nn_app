@@ -46,7 +46,7 @@ def run_option(client, option):
         return False
 
 
-def validate_offer(client_id, dealer_id, offer_id):
+def validate_order(client_id, dealer_id, offer_id):
     client = Client.objects.filter(id=client_id).first()
     dealer = Dealer.objects.filter(id=dealer_id).first()
     offer = Offer.objects.filter(id=offer_id).first()
