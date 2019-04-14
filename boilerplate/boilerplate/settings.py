@@ -94,7 +94,7 @@ DATABASES = {
         'NAME': 'main',
         'USER': 'user',
         'PASSWORD': 'password',
-        'HOST': 'localhost',
+        'HOST': 'localhost' if not os.getenv('DOCKERED', False) else 'postgres',
         'PORT': '5432',
     }
 }
@@ -139,9 +139,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Celery config
-CELERY_BROKER_URL = 'redis://localhost:6379/15'
-CELERY_BROKER_TRANSPORT_OPTIONS = {"visibility_timeout": 3600}
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/14'
+if not os.getenv('DOCKERED', False):
+    CELERY_BROKER_URL = 'redis://localhost:6379/15'
+    CELERY_BROKER_TRANSPORT_OPTIONS = {"visibility_timeout": 3600}
+    CELERY_RESULT_BACKEND = 'redis://localhost:6379/14'
+else:
+    CELERY_BROKER_URL = 'redis://red:6379/15'
+    CELERY_BROKER_TRANSPORT_OPTIONS = {"visibility_timeout": 3600}
+    CELERY_RESULT_BACKEND = 'redis://red:6379/14'
 
 CELERY_BEAT_SCHEDULE = {
     #"scan-orders": {

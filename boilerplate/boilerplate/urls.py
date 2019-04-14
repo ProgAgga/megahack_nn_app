@@ -1,9 +1,6 @@
 from django.contrib import admin
 from django.urls import path, re_path
 from django.views.generic import TemplateView
-from kombu.utils import url
-
-from rest_framework.documentation import include_docs_urls
 from rest_framework_swagger.views import get_swagger_view
 
 from boilerplate.detailed_views import *
@@ -24,6 +21,7 @@ urlpatterns.extend([
     path('api/sources/<int:id>', SourceDetailView.as_view()),
     path('api/clients', ClientsListView.as_view()),
     path('api/clients/<int:id>', ClientDetailView.as_view()),
+    path('api/clients/phone/<str:phone>', ClientByPhoneDetailView.as_view()),
     path('api/dealers', DealersListView.as_view()),
     path('api/dealers/<int:id>', DealerDetailView.as_view()),
     path('api/offers/<int:id>', OfferDetailView.as_view()),

@@ -1,3 +1,5 @@
+import os
+
 from django.core.management.base import BaseCommand
 
 from boilerplate.models import Source, SourceTypeChoices
@@ -7,7 +9,10 @@ class Command(BaseCommand):
     list_of_types = [x[0] for x in SourceTypeChoices.CHOICES]
     list_of_names = ['База данных пользователей', 'Хранилище звонков', 'API Налоговой']
     list_of_ports = [5432, 6379, 80]
-    list_of_hosts = ['localhost', 'localhost', 'api.nalog.org']
+    if not os.getenv('DOCKERED', False):
+        list_of_hosts = ['localhost', 'localhost', 'api.nalog.org']
+    else:
+        list_of_hosts = ['postgres', 'red', 'api.nalog.org']
     list_of_usernames = ['user', None, 'ploti']
     list_of_passwords = ['password', None, 'hispassword']
     list_of_databases = ['main', '0', '']

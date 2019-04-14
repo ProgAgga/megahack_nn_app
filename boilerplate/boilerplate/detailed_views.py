@@ -1,9 +1,10 @@
-from boilerplate.redis_database import redis_db
 import json
+
 from django.http import Http404
 from rest_framework import generics as gr
 from rest_framework.response import Response
 
+from boilerplate.redis_database import redis_db
 from boilerplate.serializers import *
 
 
@@ -108,3 +109,9 @@ class OptionsDetailView(gr.RetrieveDestroyAPIView):
         data['result'] = True
         self.perform_destroy(instance)
         return Response(data)
+
+
+class ClientByPhoneDetailView(gr.RetrieveAPIView):
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer
+    lookup_field = 'phone'

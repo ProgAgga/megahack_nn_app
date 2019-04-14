@@ -6,10 +6,6 @@ from boilerplate.validations.redismodule import execute_query as redis_query
 from boilerplate.validations.sqlmodule import execute_query as sql_query
 
 
-def validate_option_definition(option):
-    pass
-
-
 def run_option(client, option):
     option = Options.objects.filter(pk=option).first()
     if not option:
@@ -57,10 +53,10 @@ def run_option(client, option):
         return False
 
 
-def validate_order(client_id, dealer_id, offer_id):
+def validate_order(client_id, offer_id):
     client = Client.objects.filter(id=client_id).first()
-    dealer = Dealer.objects.filter(id=dealer_id).first()
     offer = Offer.objects.filter(id=offer_id).first()
+    dealer = client.dealer
     if not client or not dealer or not offer:
         return False
     if dealer.id not in offer.dealers:
