@@ -10,7 +10,7 @@ volumes:
   red:
 
 services:
-  postgresql:
+  postgres:
     restart: unless-stopped
     image: sameersbn/postgresql:10-1
     ports:
@@ -19,7 +19,7 @@ services:
       DEBUG: "false"
       DB_USER: user
       DB_PASS: password
-      DB_NAME: main
+      DB_NAME: main2
     volumes:
       - postgresql:/var/lib/postgresql
     networks:
@@ -37,7 +37,7 @@ services:
     networks:
       - mgnet
     depends_on:
-      - postgresql
+      - postgres
   red:
     restart: unless-stopped
     image: redis
@@ -50,7 +50,7 @@ services:
       - mgnet
   server:
     restart: unless-stopped
-    command: python3 manage.py runserver 0.0.0.0:8000
+    command: ./up.sh
     build:
       context: .
       dockerfile: ./docker/server/Dockerfile
@@ -59,10 +59,10 @@ services:
     networks:
       - mgnet
     depends_on:
-      - postgresql
+      - postgres
       - red
   celery:
-    restart: unless-stopeed
+    restart: unless-stopped
     command: celery worker -A boilerplate
     build:
       context: .
