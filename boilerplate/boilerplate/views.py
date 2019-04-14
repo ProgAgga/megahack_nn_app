@@ -19,7 +19,7 @@ class CheckOffer(vw.View):
             result, valid, invalid = validate_order(body['client'], body['offer'])
         except KeyError:
             return HttpResponse(json.dumps({
-                'error': "Only 'client', 'dealer', 'offer' should be included in request"
+                'error': "Only 'client', 'offer' should be included in request"
             }))
         return HttpResponse(content=json.dumps({
             'result': result,
