@@ -4,7 +4,8 @@ from rest_framework import generics as gr
 from rest_framework.response import Response
 
 from boilerplate.serializers import *
-from boilerplate.tasks  import order_offer_validate
+from boilerplate.tasks import order_offer_validate
+
 
 class ClientsListView(gr.ListCreateAPIView):
     """
