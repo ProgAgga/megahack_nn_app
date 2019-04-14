@@ -1,3 +1,5 @@
+from boilerplate.redis_database import redis_db
+import json
 from django.http import Http404
 from rest_framework import generics as gr
 from rest_framework.response import Response
@@ -68,6 +70,24 @@ class OfferOrderDetailView(gr.RetrieveAPIView):
     queryset = OfferOrder.objects.all()
     serializer_class = OfferOrderSerializer
     lookup_field = 'id'
+
+    def retrieve(self, request, *args, **kwargs):
+        try:
+            instance = self.get_object()
+        except Http404:
+            raise
+        serializer = self.get_serializer(instance)
+        data = serializer.data
+        if instance.status != 'P':
+            valid = redis_db.get(f'{instance.id}_valid')
+            if valid is not None:
+                valid = json.loads(valid)
+            invalid = redis_db.get(f'{instance}_invalid')
+            if invalid is not None:
+                invalid = json.loads(invalid)
+            data['valid'] = valid
+            data['invalid'] = invalid
+        return Response(data)
 
 
 class OptionsDetailView(gr.RetrieveDestroyAPIView):
