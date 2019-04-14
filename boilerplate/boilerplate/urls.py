@@ -10,7 +10,7 @@ from boilerplate.detailed_views import *
 from boilerplate.list_views import *
 from boilerplate.views import *
 
-schema_view = get_swagger_view(title="Swagger Docs")
+schema_view = get_swagger_view(title="BSS, powered by 'Without C++'")
 
 
 urlpatterns = [

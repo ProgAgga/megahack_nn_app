@@ -139,15 +139,15 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Celery config
-CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_BROKER_URL = 'redis://localhost:6379/15'
 CELERY_BROKER_TRANSPORT_OPTIONS = {"visibility_timeout": 3600}
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/1'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/14'
 
 CELERY_BEAT_SCHEDULE = {
-    "scan-orders": {
-        "task": "boilerplate.tasks.scan_orders",
-        "schedule": 5
-    },
+    #"scan-orders": {
+      #  "task": "boilerplate.tasks.scan_orders",
+       # "schedule": 5
+    #},
 }
 
 CELERY_IMPORTS = [
