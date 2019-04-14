@@ -27,9 +27,6 @@ def run_option(client, option):
         return False
     operator = option.options['operator']
     value = option.options['value']
-    print(operator)
-    print(value)
-    print(result)
     # сравнить value и result используя operator
     try:
         if operator == '>':
@@ -63,7 +60,6 @@ def validate_order(client_id, dealer_id, offer_id):
         else:
             invalid.append(option)
     if invalid:
-        return False
+        return False, valid, invalid
     else:
-        return True
-
+        return True, valid, invalid

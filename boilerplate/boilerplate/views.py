@@ -15,8 +15,10 @@ class CheckOffer(vw.View):
     def post(self, request):
         body_unicode = request.body.decode('utf-8')
         body = json.loads(body_unicode)
-        result = validate_order(body['client'], body['dealer'], body['offer'])
+        result, valid, invalid = validate_order(body['client'], body['dealer'], body['offer'])
         return HttpResponse(content=json.dumps({
             'result': result,
+            'valid': valid,
+            'invalid': invalid,
             **body
         }))
