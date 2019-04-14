@@ -82,7 +82,7 @@ class OfferOrderDetailView(gr.RetrieveAPIView):
             valid = redis_db.get(f'{instance.id}_valid')
             if valid is not None:
                 valid = json.loads(valid)
-            invalid = redis_db.get(f'{instance}_invalid')
+            invalid = redis_db.get(f'{instance.id}_invalid')
             if invalid is not None:
                 invalid = json.loads(invalid)
             data['valid'] = valid
