@@ -9,10 +9,49 @@ class Order extends React.Component {
 
     constructor(props) {
         super(props);
-
-        this.state = {};
+        this.state = {checkOfferObject: {}}
         this.phone = this.phone
       }
+ 
+    //   componentDidMount() {
+        //   fetch("/api/check-order",
+        //     {
+        //         headers: {
+        //             'Accept': 'application/json',
+        //             'Content-Type': 'application/json'
+        //         },
+        //         method: "POST",
+        //         body: JSON.stringify({
+        //             client: this.props.client.id,
+        //             dealer: this.props.client.dealer,
+        //             offer: this.props.data.offer
+        //         })
+        //     }
+        //   ).then(
+        //     response => response.json()
+        // ).then(
+        //     this.setState({
+        //         checkOfferObject: response
+        //     })
+        // )
+
+
+
+        //TODO ДОДЕЛАТЬ ФЕТЧ ЕБАНЫЙ!!!
+
+
+    //     fetch("/api/check-order", {method: 'POST',body:JSON.stringify({
+    //         client: this.props.client.id,
+    //         dealer: this.props.client.dealer,
+    //         offer: this.props.data.offer
+    //     }),headers:{'content-type': 'application/json'}})
+    //     .then(function (response) {
+    //         return response.json();
+    //     })
+    //     .then(function (data) {
+    //         checkOfferObject: data
+    //     })
+    //   }
 
     render() {
         return(
@@ -60,6 +99,10 @@ class Order extends React.Component {
         }
         return message;
     }
+
+    // getCheckOffer() {
+
+    // }
 }
 
 export default Order;

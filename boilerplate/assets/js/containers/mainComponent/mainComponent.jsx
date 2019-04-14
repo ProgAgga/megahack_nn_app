@@ -12,14 +12,14 @@ class MainComponent extends React.Component {
         return(
             <>
                 <Switch>
-                        <Route exact path="/page1/" component={OrderManagment} />
-                        <Route exact path="/page2/" component={CheckComponent} />
+                        <Route exact path="/order/" component={OrderManagment} />
+                        <Route exact path="/check_offers/" component={CheckComponent} />
                         <Route exact path="/settings/" component={SettingsComponent} />
                         <Route exact path="/settings/sources" component={SourcesContainer} />
                         {/*<Route exact path="/settings/" component={SettingsComponent} />*/}
                         {/*<Route exact path="/settings/" component={SettingsComponent} />*/}
                         <Route path="/">
-                            <Redirect to="/page1/" />
+                            <Redirect to="/order/" />
                         </Route>
                  </Switch> 
             </>
