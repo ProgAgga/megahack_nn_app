@@ -1,9 +1,10 @@
-from boilerplate.redis_database import redis_db
 import json
+
 from django.http import Http404
 from rest_framework import generics as gr
 from rest_framework.response import Response
 
+from boilerplate.redis_database import redis_db
 from boilerplate.serializers import *
 
 
