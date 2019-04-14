@@ -1,0 +1,40 @@
+version: "3"
+
+
+networks:
+  dbs:
+    driver: bridge
+
+volumes:
+  postgres:
+    external: true
+  pgadmin:
+    external: true
+
+services:
+  postgresql:
+    restart: unless-stopped
+    image: sameersbn/postgresql:10-1
+    ports:
+      - "5432:5432"
+    environment:
+      DEBUG: "false"
+      DB_USER: user
+      DB_PASS: password
+      DB_NAME: main
+    volumes:
+      - postgres:/var/lib/postgresql
+    networks:
+      - dbs
+  pgadmin:
+    restart: unless-stopped
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: qwerty
+      PGADMIN_DEFAULT_PASSWORD: 12345
+    volumes:
+      - pgadmin:/root/.pgadmin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    networks:
+      - dbs

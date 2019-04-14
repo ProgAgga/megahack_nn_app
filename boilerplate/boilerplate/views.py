@@ -9,7 +9,7 @@ from boilerplate.validations.offer_validation import validate_order
 class CheckOffer(vw.View):
     """
         create:
-            Check the ability of making offer
+            Synchronously check the ability of making offer
     """
 
     def post(self, request):
