@@ -16,7 +16,7 @@ class CheckOffer(vw.View):
         body_unicode = request.body.decode('utf-8')
         body = json.loads(body_unicode)
         try:
-            result, valid, invalid = validate_order(body['client'], body['dealer'], body['offer'])
+            result, valid, invalid = validate_order(body['client'], body['offer'])
         except KeyError:
             return HttpResponse(json.dumps({
                 'error': "Only 'client', 'dealer', 'offer' should be included in request"
