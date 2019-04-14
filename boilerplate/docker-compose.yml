@@ -19,7 +19,7 @@ services:
       DEBUG: "false"
       DB_USER: user
       DB_PASS: password
-      DB_NAME: main2
+      DB_NAME: main
     volumes:
       - postgresql:/var/lib/postgresql
     networks:
@@ -50,7 +50,7 @@ services:
       - mgnet
   server:
     restart: unless-stopped
-    command: ./up.sh
+    command: bash -c "python manage.py migrate && ./up.sh"
     build:
       context: .
       dockerfile: ./docker/server/Dockerfile
