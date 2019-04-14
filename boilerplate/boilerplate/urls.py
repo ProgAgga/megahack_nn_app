@@ -1,9 +1,6 @@
 from django.contrib import admin
 from django.urls import path, re_path
 from django.views.generic import TemplateView
-from kombu.utils import url
-
-from rest_framework.documentation import include_docs_urls
 from rest_framework_swagger.views import get_swagger_view
 
 from boilerplate.detailed_views import *

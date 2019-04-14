@@ -1,10 +1,10 @@
-from boilerplate.redis_database import redis_db
 import datetime
 import json
 
 from boilerplate.celery import app
-from boilerplate.validations.offer_validation import validate_order
 from boilerplate.models import OfferOrder
+from boilerplate.redis_database import redis_db
+from boilerplate.validations.offer_validation import validate_order
 
 
 @app.task(serializer='json')
