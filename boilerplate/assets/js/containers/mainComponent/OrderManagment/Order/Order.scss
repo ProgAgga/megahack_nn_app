@@ -1,0 +1,84 @@
+.singleOrder {
+    display: grid;
+    flex-direction: row;
+    text-align: center;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 100%;
+    grid-template-areas: 
+        'client clientOrder status startDate finishDate ';
+    
+        .client {
+            grid-area: client;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .clientOrder {
+            grid-area: clientOrder;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .status {
+            grid-area: status;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .startDate {
+            grid-area: startDate;
+            padding-top: 10px;
+            padding-bottom: 10px; 
+        }
+
+        .finishDate {
+            grid-area: finishDate;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+}
+
+.singleOrder > p {
+    margin: 10px;
+}
+
+.separator {
+    width: 100%;
+    border-top:1px solid #555555;
+    border-radius: 20px;
+}
+
+.singleOrder:nth-child(2n) {
+    background-color:  rgb(226, 225, 225);
+}
+
+.singleOrder:nth-child(2n-1) {
+    background-color: #ffffff; /* Цвет фона */
+}
+
+.singleOrder:hover {
+    background-color: #33C778;
+}
+
+.singleOrder:last-child {
+    border-radius: 0 0 20px 20px;
+}
+
+.tooltip{ 
+    color: #fff !important; 
+    display: none !important;
+    position: relative !important;
+    margin-left: 100px !important;
+    margin-top: -60px !important;
+    background-color:rgba(0, 0, 0, 0.7) !important;
+    border: 2px #202020 solid !important;
+    padding: 5px 5px 5px 5px !important;
+    border-radius: 5px !important;
+    width:310px !important;
+    box-shadow: #000 0 0 10px 5px !important;
+    z-index:100 !important;
+    }
+
+    .status:hover .tooltip{
+        display: block !important;
+        }
