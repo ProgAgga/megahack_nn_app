@@ -109,3 +109,9 @@ class OptionsDetailView(gr.RetrieveDestroyAPIView):
         data['result'] = True
         self.perform_destroy(instance)
         return Response(data)
+
+
+class ClientByPhoneDetailView(gr.RetrieveAPIView):
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer
+    lookup_field = 'phone'
