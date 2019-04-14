@@ -8,7 +8,7 @@ class Command(BaseCommand):
     list_of_names = ['База данных пользователей', 'Хранилище звонков', 'API Налоговой']
     list_of_ports = [5432, 6379, 80]
     list_of_hosts = ['localhost', 'localhost', 'api.nalog.org']
-    list_of_usernames = ['username', None, 'ploti']
+    list_of_usernames = ['user', None, 'ploti']
     list_of_passwords = ['password', None, 'hispassword']
     list_of_databases = ['main', '0', '']
     list_of_tables = ['boilerplate_client', None, None]

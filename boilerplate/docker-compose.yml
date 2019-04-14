@@ -1,0 +1,60 @@
+version: "3"
+
+networks:
+  dbs:
+    mgnet: bridge
+
+volumes:
+  postgresql:
+  postgresgadmin:
+  red:
+
+services:
+  postgresql:
+    restart: unless-stopped
+    image: sameersbn/postgresql:10-1
+    ports:
+      - "5432:5432"
+    environment:
+      DEBUG: "false"
+      DB_USER: user
+      DB_PASS: password
+      DB_NAME: main
+    volumes:
+      - postgresql:/var/lib/postgresql
+    networks:
+      - mgnet
+  pgadmin:
+    restart: unless-stopped
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: qwerty
+      PGADMIN_DEFAULT_PASSWORD: 12345
+    volumes:
+      - postgresadmin:/root/.pgadmin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    networks:
+      - mgnet
+  redis:
+    restart: unless-stopped
+    image: redis
+    entrypoint: redis-server --appendonly yes
+    volumes:
+      - red:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - mgnet
+  server:
+    restart: unless-stopped
+    image: megahack-server
+    ports:
+      - "8000:8000"
+    networks:
+      - mgnet
+  celery:
+    restart: unless-stopeed
+    image: megahack-celery
+    networks:
+      - mgnet

@@ -14,7 +14,11 @@ class ClientSerializer(sz.ModelSerializer):
 class OfferSerializer(sz.ModelSerializer):
     class Meta:
         model = Offer
-        fields = ('id', 'name', 'due_date', 'options')
+        fields = ('id', 'name', 'due_date', 'options', 'dealers')
+
+        extra_kwargs = {
+            'dealers': {'required': False}
+        }
 
 
 class DealerSerializer(sz.ModelSerializer):
