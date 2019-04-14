@@ -31,12 +31,12 @@ class NavigationBar extends React.Component {
             <div className="navBlock">
                 <div className="container">
                     <ul>
-                        <Link to="/page1/">order managment</Link>
+                        <Link to="/orders">order managment</Link>
                     </ul>
                 </div>
                 <div className="container">
                     <ul>
-                        <Link to="/page2/">check</Link>
+                        <Link to="/check_offers">check</Link>
                     </ul>
                 </div>
                 <div className="container">

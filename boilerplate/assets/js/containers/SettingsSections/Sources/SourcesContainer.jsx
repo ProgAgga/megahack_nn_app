@@ -37,12 +37,14 @@ export default class SourcesContainer extends React.Component{
                         </ModalCaller>
                     </div>
                 </div>
+            <div className="Table">   
                 <SourcesTableHeaders/>
             {
                 this.state.sources ?
                     <SourcesTableRows data={this.state.sources}/>
                     : <LoadingComp/>
             }
+            </div>
             </div>
     }
 }

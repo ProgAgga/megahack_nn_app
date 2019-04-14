@@ -17,18 +17,50 @@ class CheckComponent extends React.Component {
 
     // }
 
+    
+    constructor(props){
+        super(props)
+        this.inputInfo="";
+        this.selectedOffer="";
+
+        this.state = {dealers:[], offers:[]}
+    }
+    componentDidMount(){
+        fetch("/api/offers").then(
+            response => response.json()
+        ).then(
+            offers => fetch("/api/dealers").then(
+                response => response.json()
+            ).then(
+                    dealers =>
+                        this.setState({
+                        dealers: dealers,
+                        offers: offers
+                    })
+            )
+        )
+    }
+
     render() {
         return(
             <div className="checkContainer">
                 <div className="fieldsForCheck">
                     <input className="idInput" />
-                    <select className="dealerList">
-
+                    {/* <select className="dealerList">
+                        {
+                             this.state.dealers? this.state.dealers.map((elem,i) => (
+                                <option key={i} > {elem.name}</option> 
+                             )): "randomnoechoto"
+                        }
+                    </select> */}
+                    <select  className="offerList">
+                        {
+                             this.state.offers? this.state.offers.map((elem,i) => (
+                                <option key={i} > {elem.name}</option> 
+                             )): "randomnoechoto"
+                        }
                     </select>
-                    <select className="offerList">
-
-                    </select>
-                    <button className="checkButton">
+                    <button className="checkButton" >
                         click
                     </button>
                 </div>
@@ -51,6 +83,12 @@ class CheckComponent extends React.Component {
             </div>
         );
     } 
+
+    onClickHandler(e) {
+        console.log(this.state.inputInfo);
+        
+        console.log(this.state.selectedOffer);
+    }
 }
 
 export default CheckComponent;
