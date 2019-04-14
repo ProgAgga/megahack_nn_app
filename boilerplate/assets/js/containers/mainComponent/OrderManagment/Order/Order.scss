@@ -65,20 +65,32 @@
 }
 
 .tooltip{ 
-    color: #fff !important; 
-    display: none !important;
-    position: relative !important;
-    margin-left: 100px !important;
-    margin-top: -60px !important;
-    background-color:rgba(0, 0, 0, 0.7) !important;
-    border: 2px #202020 solid !important;
-    padding: 5px 5px 5px 5px !important;
-    border-radius: 5px !important;
-    width:310px !important;
-    box-shadow: #000 0 0 10px 5px !important;
-    z-index:100 !important;
+    color: #fff; 
+    display: none;
+    position: relative;
+    margin-left: 100px;
+    margin-top: -60px;
+    background-color:rgba(0, 0, 0, 0.85);
+    border: 2px #202020 solid;
+    padding: 5px 5px 5px 5px;
+    border-radius: 5px;
+    width:310px;
+    box-shadow: #000 0 0 5px 5px;
+    z-index:100;
     }
 
-    .status:hover .tooltip{
-        display: block !important;
-        }
+.status:hover .tooltip{
+    display: block;
+}
+
+.invalidOption {
+    color: rgb(240, 57, 57);
+}
+
+.validOptions {
+    color: #33C778;
+}
+
+.pendingOptions {
+    color: rgba(255, 166, 0, 0.89);
+}

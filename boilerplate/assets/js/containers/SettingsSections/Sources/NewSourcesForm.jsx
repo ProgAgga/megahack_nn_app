@@ -34,7 +34,7 @@ export default class NewSourcesForm extends React.Component {
     render () {
         return (
             <>
-            <form>
+            <form className="formBlock">
                 <label>name</label>
                 <input type="text" name="name" onChange={this.handleChange} />
                 <label>host</label>
