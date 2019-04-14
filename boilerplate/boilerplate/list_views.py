@@ -76,7 +76,7 @@ class OffersOrdersListView(gr.ListCreateAPIView):
             status='P'
         )
         offer_order.save()
-        order_offer_validate(offer_order.id)
+        order_offer_validate.delay(offer_order.id)
         return Response(self.get_serializer_class()(offer_order).data)
 
 
